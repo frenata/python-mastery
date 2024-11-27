@@ -1,6 +1,6 @@
 {
 	"name": "python env",
-	"dockerFile": "Dockerfile",
+	"image": "base-python",
 	"remoteUser": "${localEnv:USER}",
 	"settings": {
 		"terminal.integrated.shell.linux": "/bin/bash"
@@ -8,8 +8,8 @@
 
 	"features": {
 		"ghcr.io/nils-geistmann/devcontainers-features/create-remote-user:0": {},
-		"ghcr.io/duduribeiro/devcontainer-features/neovim:1": { "version": "nightly" },
-		"ghcr.io/guiyomh/features/just:0": {}
-	}
+		"ghcr.io/duduribeiro/devcontainer-features/neovim:1": { "version": "nightly" }
+	},
+	"postCreateCommand": "bash /opt/scripts/atuin.sh"
 
 }
