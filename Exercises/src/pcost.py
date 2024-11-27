@@ -1,4 +1,7 @@
 import sys
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def main(filename):
@@ -6,8 +9,11 @@ def main(filename):
 
     with open(filename) as f:
         for line in f:
-            ticker, shares, price = line.split(" ")
-            total += int(shares) * float(price)
+            ticker, shares, price = line.split()
+            try:
+                total += int(shares) * float(price)
+            except Exception as e:
+                logger.exception(f"Failed to parse {line}")
 
     return total
 
